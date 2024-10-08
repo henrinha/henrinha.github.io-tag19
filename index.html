@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vaskeplan for tag19.no</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #9be15d, #00e3ae);
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .week-info {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        .task-container {
+            display: block;
+            margin-top: 30px;
+        }
+        .task-info {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            margin: 20px auto;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <script>
+        function getWeekNumber() {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 1);
+            const diff = now - start + (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60000;
+            const oneWeek = 604800000;
+            return Math.floor(diff / oneWeek) + 1;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('week-number').textContent = 'Uke: ' + getWeekNumber();
+        });
+    </script>
+</head>
+<body>
+    <h1>Vaskeplan for Kollektivet</h1>
+    <p id="week-number" class="week-info"></p>
+    <div class="task-container">
+        <div class="task-info">
+            <h2>Uke 35</h2>
+            <p><strong>Kjøkken/Stue:</strong> Joachim</p>
+            <p><strong>Bad:</strong> Henrik</p>
+            <p><strong>Gang/Trapp:</strong> Marius</p>
+            <p><strong>Innkjøp:</strong> Oskar</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 36</h2>
+            <p><strong>Kjøkken/Stue:</strong> Henrik</p>
+            <p><strong>Bad:</strong> Marius</p>
+            <p><strong>Gang/Trapp:</strong> Oskar</p>
+            <p><strong>Innkjøp:</strong> Joachim</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 37</h2>
+            <p><strong>Kjøkken/Stue:</strong> Marius</p>
+            <p><strong>Bad:</strong> Oskar</p>
+            <p><strong>Gang/Trapp:</strong> Joachim</p>
+            <p><strong>Innkjøp:</strong> Henrik</p>
+        </div>
+        <!-- Additional weeks can be added here in a similar format -->
+    </div>
+</body>
+</html>
