@@ -57,7 +57,7 @@
                 const weekNumber = parseInt(taskInfo.querySelector('h2').textContent.replace('Uke ', ''));
                 if (weekNumber === currentWeek) {
                     taskInfo.classList.add('current-week');
-                    taskInfo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    //taskInfo.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             });
         });
@@ -65,10 +65,10 @@
 </head>
 <body>
     <h1>Velkommen til TAG19!</h1>
-    <h1>Vaskeplan for Kollektivet</h1>
+    <h1>Vaskeplan for Kollektivet. Husk å kast papp Oskar!</h1>
     <p id="week-number" class="week-info"></p>
     <div class="task-container">
-        <div class="task-info">
+        <div class="task-info" style="border: 3px solid red;">
             <h2>Uke 39</h2>
             <p><strong>Kjøkken/Stue:</strong> Joachim</p>
             <p><strong>Bad:</strong> Henrik</p>
