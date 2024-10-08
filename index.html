@@ -57,6 +57,7 @@
                 const weekNumber = parseInt(taskInfo.querySelector('h2').textContent.replace('Uke ', ''));
                 if (weekNumber === currentWeek) {
                     taskInfo.classList.add('current-week');
+                    taskInfo.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             });
         });
