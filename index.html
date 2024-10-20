@@ -3,9 +3,10 @@
 <head>
     <title>Handleliste og Vaskeplan for tag19.no</title>
     <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics-compat.js"></script>
+
 
     <script>
         // Din Firebase-konfigurasjon
@@ -28,6 +29,8 @@
 
     <!-- Din eksisterende CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 
     <!-- Inkluder handleliste.js - LASTES SIST FOR Å VÆRE SIKKER PÅ AT FIREBASE ER INITIALISERT -->
     <script src="handleliste.js"></script>
@@ -43,8 +46,10 @@
         <h2>Handleliste</h2>
         <input type="text" id="varenavn" placeholder="Varenavn">
         <input type="number" id="mengde" placeholder="Mengde">
+        <input type="text" id="kommentar" placeholder="Kommentar (valgfritt)">
         <button onclick="leggTilVare()">Legg til vare</button>
     </div>
+    
 
     <div class="items" id="items">
         <!-- Handlelistevarer vises her -->

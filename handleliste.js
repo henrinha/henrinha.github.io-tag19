@@ -9,7 +9,7 @@ function leggTilVare() {
         db.collection("handlelister").add({
             varenavn: varenavn,
             mengde: mengde,
-            kjøpt: false
+            kjopt: false
         })
         .then(() => {
             console.log("Vare lagt til i handlelisten!");
@@ -38,6 +38,7 @@ function hentHandleliste() {
                 <button onclick="slettVare('${doc.id}')">Slett</button>
             `;
             itemsContainer.appendChild(itemDiv);
+            console.log("handleliste.js er lastet inn");
         });
     }).catch((error) => {
         console.error("Feil ved henting av handlelisten: ", error);
@@ -56,4 +57,5 @@ function slettVare(id) {
 // Vent på at DOM-en lastes inn og hent deretter handlelisten
 document.addEventListener('DOMContentLoaded', function () {
     hentHandleliste();
+    
 });
