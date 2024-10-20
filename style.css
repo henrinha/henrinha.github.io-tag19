@@ -1,0 +1,67 @@
+/* Din eksisterende CSS */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #9be15d, #00e3ae);
+    color: #333;
+    text-align: center;
+    padding: 50px;
+}
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+.week-info {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.task-container {
+    display: block;
+    margin-top: 30px;
+}
+.task-info {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    margin: 20px auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.current-week {
+    background: rgba(255, 215, 0, 0.8); /* Gullfarge for aktuell uke */
+}
+
+/* CSS for handlelisten */
+.shopping-list {
+    margin-top: 50px;
+}
+.shopping-list input[type="text"],
+.shopping-list input[type="number"] {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+}
+.shopping-list button {
+    padding: 10px 20px;
+    margin: 5px;
+}
+.items {
+    margin-top: 20px;
+}
+.item {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    margin: 10px auto;
+    width: 40%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.item p {
+    margin: 0;
+}

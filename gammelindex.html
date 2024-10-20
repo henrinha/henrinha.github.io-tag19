@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
+    <title>Vaskeplan for tag19.no</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function getWeekNumber() {
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 1);
+            const diff = now - start + (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60000;
+            const oneWeek = 604800000;
+            return Math.floor(diff / oneWeek) + 1;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentWeek = getWeekNumber();
+            document.getElementById('week-number').textContent = 'Uke: ' + currentWeek;
+
+            const taskInfos = document.querySelectorAll('.task-info');
+            taskInfos.forEach(function (taskInfo) {
+                const weekNumber = parseInt(taskInfo.querySelector('h2').textContent.replace('Uke ', ''));
+                if (weekNumber === currentWeek) {
+                    taskInfo.classList.add('current-week');
+                    //taskInfo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Velkommen til TAG19!</h1>
+    <h1>Hvorfor kan ikke fisker spille piano?
+
+Fordi de er redde for nøklene! 🎶🐟!</h1>
+    <p id="week-number" class="week-info"></p>
+    <div class="task-container">
+        <div class="task-info" style="border: 3px solid red;">
+            <h2>Uke 39</h2>
+            <p><strong>Kjøkken/Stue:</strong> Joachim</p>
+            <p><strong>Bad:</strong> Henrik</p>
+            <p><strong>Gang/Trapp:</strong> Marius</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Oskar</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 40</h2>
+            <p><strong>Kjøkken/Stue:</strong> Henrik</p>
+            <p><strong>Bad:</strong> Marius</p>
+            <p><strong>Gang/Trapp:</strong> Oskar</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Joachim</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 41</h2>
+            <p><strong>Kjøkken/Stue:</strong> Marius</p>
+            <p><strong>Bad:</strong> Oskar</p>
+            <p><strong>Gang/Trapp:</strong> Joachim</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Henrik</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 42</h2>
+            <p><strong>Kjøkken/Stue:</strong> Oskar</p>
+            <p><strong>Bad:</strong> Joachim</p>
+            <p><strong>Gang/Trapp:</strong> Henrik</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Marius</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 43</h2>
+            <p><strong>Kjøkken/Stue:</strong> Joachim</p>
+            <p><strong>Bad:</strong> Henrik</p>
+            <p><strong>Gang/Trapp:</strong> Marius</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Oskar</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 44</h2>
+            <p><strong>Kjøkken/Stue:</strong> Henrik</p>
+            <p><strong>Bad:</strong> Marius</p>
+            <p><strong>Gang/Trapp:</strong> Oskar</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Joachim</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 45</h2>
+            <p><strong>Kjøkken/Stue:</strong> Marius</p>
+            <p><strong>Bad:</strong> Oskar</p>
+            <p><strong>Gang/Trapp:</strong> Joachim</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Henrik</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 46</h2>
+            <p><strong>Kjøkken/Stue:</strong> Oskar</p>
+            <p><strong>Bad:</strong> Joachim</p>
+            <p><strong>Gang/Trapp:</strong> Henrik</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Marius</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 47</h2>
+            <p><strong>Kjøkken/Stue:</strong> Joachim</p>
+            <p><strong>Bad:</strong> Henrik</p>
+            <p><strong>Gang/Trapp:</strong> Marius</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Oskar</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 48</h2>
+            <p><strong>Kjøkken/Stue:</strong> Henrik</p>
+            <p><strong>Bad:</strong> Marius</p>
+            <p><strong>Gang/Trapp:</strong> Oskar</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Joachim</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 49</h2>
+            <p><strong>Kjøkken/Stue:</strong> Marius</p>
+            <p><strong>Bad:</strong> Oskar</p>
+            <p><strong>Gang/Trapp:</strong> Joachim</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Henrik</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 50</h2>
+            <p><strong>Kjøkken/Stue:</strong> Oskar</p>
+            <p><strong>Bad:</strong> Joachim</p>
+            <p><strong>Gang/Trapp:</strong> Henrik</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Marius</p>
+        </div>
+        <div class="task-info">
+            <h2>Uke 51</h2>
+            <p><strong>Kjøkken/Stue:</strong> Joachim</p>
+            <p><strong>Bad:</strong> Henrik</p>
+            <p><strong>Gang/Trapp:</strong> Marius</p>
+            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Oskar</p>
+        </div>
+    </div>
+</body>
+</html>

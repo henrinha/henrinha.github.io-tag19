@@ -1,74 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vaskeplan for tag19.no</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #9be15d, #00e3ae);
-            color: #333;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        .week-info {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-        .task-container {
-            display: block;
-            margin-top: 30px;
-        }
-        .task-info {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            width: 60%;
-            margin: 20px auto;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .current-week {
-            background: rgba(255, 215, 0, 0.8); /* Gullfarge for aktuell uke */
-        }
-    </style>
+    <title>Handleliste og Vaskeplan for tag19.no</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-analytics.js"></script>
+
     <script>
-        function getWeekNumber() {
-            const now = new Date();
-            const start = new Date(now.getFullYear(), 0, 1);
-            const diff = now - start + (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60000;
-            const oneWeek = 604800000;
-            return Math.floor(diff / oneWeek) + 1;
-        }
+        // Din Firebase-konfigurasjon
+        const firebaseConfig = {
+            apiKey: "AIzaSyC23XHqK_cGwqg_HQIYztB1waqZKtdHlio",
+            authDomain: "tag19-79561.firebaseapp.com",
+            projectId: "tag19-79561",
+            storageBucket: "tag19-79561.appspot.com",
+            messagingSenderId: "176928018706",
+            appId: "1:176928018706:web:026704e43c11d6073fa3cb",
+            measurementId: "G-M2FMKXNSXZ"
+        };
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const currentWeek = getWeekNumber();
-            document.getElementById('week-number').textContent = 'Uke: ' + currentWeek;
-
-            const taskInfos = document.querySelectorAll('.task-info');
-            taskInfos.forEach(function (taskInfo) {
-                const weekNumber = parseInt(taskInfo.querySelector('h2').textContent.replace('Uke ', ''));
-                if (weekNumber === currentWeek) {
-                    taskInfo.classList.add('current-week');
-                    //taskInfo.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            });
-        });
+        // Initialiser Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        firebase.analytics();
+        console.log(db);
     </script>
+
+    <!-- Din eksisterende CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Inkluder handleliste.js - LASTES SIST FOR Å VÆRE SIKKER PÅ AT FIREBASE ER INITIALISERT -->
+    <script src="handleliste.js"></script>
 </head>
 <body>
     <h1>Velkommen til TAG19!</h1>
-    <h1>Hvorfor kan ikke fisker spille piano?
-
-Fordi de er redde for nøklene! 🎶🐟!</h1>
+    <h1>Hvorfor kan ikke fisker spille piano?<br>
+    Fordi de er redde for nøklene! 🎶🐟!</h1>
     <p id="week-number" class="week-info"></p>
+
+    <!-- Legg til handlelisten her -->
+    <div class="shopping-list">
+        <h2>Handleliste</h2>
+        <input type="text" id="varenavn" placeholder="Varenavn">
+        <input type="number" id="mengde" placeholder="Mengde">
+        <button onclick="leggTilVare()">Legg til vare</button>
+    </div>
+
+    <div class="items" id="items">
+        <!-- Handlelistevarer vises her -->
+    </div>
+
+    <!-- Din eksisterende vaskeliste -->
     <div class="task-container">
         <div class="task-info" style="border: 3px solid red;">
             <h2>Uke 39</h2>
@@ -91,76 +73,7 @@ Fordi de er redde for nøklene! 🎶🐟!</h1>
             <p><strong>Gang/Trapp:</strong> Joachim</p>
             <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Henrik</p>
         </div>
-        <div class="task-info">
-            <h2>Uke 42</h2>
-            <p><strong>Kjøkken/Stue:</strong> Oskar</p>
-            <p><strong>Bad:</strong> Joachim</p>
-            <p><strong>Gang/Trapp:</strong> Henrik</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Marius</p>
-        </div>
-        <div class="task-info">
-            <h2>Uke 43</h2>
-            <p><strong>Kjøkken/Stue:</strong> Joachim</p>
-            <p><strong>Bad:</strong> Henrik</p>
-            <p><strong>Gang/Trapp:</strong> Marius</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Oskar</p>
-        </div>
-        <div class="task-info">
-            <h2>Uke 44</h2>
-            <p><strong>Kjøkken/Stue:</strong> Henrik</p>
-            <p><strong>Bad:</strong> Marius</p>
-            <p><strong>Gang/Trapp:</strong> Oskar</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Joachim</p>
-        </div>
-        <div class="task-info">
-            <h2>Uke 45</h2>
-            <p><strong>Kjøkken/Stue:</strong> Marius</p>
-            <p><strong>Bad:</strong> Oskar</p>
-            <p><strong>Gang/Trapp:</strong> Joachim</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Henrik</p>
-        </div>
-        <div class="task-info">
-            <h2>Uke 46</h2>
-            <p><strong>Kjøkken/Stue:</strong> Oskar</p>
-            <p><strong>Bad:</strong> Joachim</p>
-            <p><strong>Gang/Trapp:</strong> Henrik</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Marius</p>
-        </div>
-        <div class="task-info">
-            <h2>Uke 47</h2>
-            <p><strong>Kjøkken/Stue:</strong> Joachim</p>
-            <p><strong>Bad:</strong> Henrik</p>
-            <p><strong>Gang/Trapp:</strong> Marius</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Oskar</p>
-        </div>
-        <div class="task-info">
-            <h2>Uke 48</h2>
-            <p><strong>Kjøkken/Stue:</strong> Henrik</p>
-            <p><strong>Bad:</strong> Marius</p>
-            <p><strong>Gang/Trapp:</strong> Oskar</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Joachim</p>
-        </div>
-        <div class="task-info">
-            <h2>Uke 49</h2>
-            <p><strong>Kjøkken/Stue:</strong> Marius</p>
-            <p><strong>Bad:</strong> Oskar</p>
-            <p><strong>Gang/Trapp:</strong> Joachim</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Henrik</p>
-        </div>
-        <div class="task-info">
-            <h2>Uke 50</h2>
-            <p><strong>Kjøkken/Stue:</strong> Oskar</p>
-            <p><strong>Bad:</strong> Joachim</p>
-            <p><strong>Gang/Trapp:</strong> Henrik</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Marius</p>
-        </div>
-        <div class="task-info">
-            <h2>Uke 51</h2>
-            <p><strong>Kjøkken/Stue:</strong> Joachim</p>
-            <p><strong>Bad:</strong> Henrik</p>
-            <p><strong>Gang/Trapp:</strong> Marius</p>
-            <p><strong>Innkjøp OG kaste papp f.f.s.:</strong> Oskar</p>
-        </div>
+        <!-- Flere uker kan legges til her... -->
     </div>
 </body>
 </html>
